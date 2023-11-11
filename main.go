@@ -1,9 +1,7 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-	"log"
+	"net/http"
 )
 
 type person struct {
@@ -11,24 +9,36 @@ type person struct {
 }
 
 func main() {
-	p1 := person{First: "Jenny"}
-	p2 := person{First: "Penny"}
-	xp := []person{p1, p2}
+	// p1 := person{First: "Jenny"}
+	// p2 := person{First: "Penny"}
+	// xp := []person{p1, p2}
 
-	bs, err := json.Marshal(xp)
+	// bs, err := json.Marshal(xp)
 
-	if err != nil {
-		log.Panic(err)
-	}
+	// if err != nil {
+	// 	log.Panic(err)
+	// }
 
-	fmt.Println("PRINT JSON", string(bs))
+	// fmt.Println("PRINT JSON", string(bs))
 
-	xp2 := []person{}
-	err = json.Unmarshal(bs, &xp2)
+	// xp2 := []person{}
+	// err = json.Unmarshal(bs, &xp2)
 
-	if err != nil {
-		log.Panic(err)
-	}
+	// if err != nil {
+	// 	log.Panic(err)
+	// }
 
-	fmt.Println("Go Data Structure", xp2)
+	// fmt.Println("Go Data Structure", xp2)
+
+	http.HandleFunc("/encode", foo)
+	http.HandleFunc("/decode", bar)
+	http.ListenAndServe(":8080 ", nil)
+}
+
+func foo(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func bar(w http.ResponseWriter, r *http.Request) {
+
 }
