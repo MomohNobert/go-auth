@@ -35,7 +35,7 @@ func hashPassword(password string) ([]byte, error) {
 func comparePassword(password string, hashedPass []byte) error {
 	err := bcrypt.CompareHashAndPassword(hashedPass, []byte(password))
 	if err != nil {
-		return fmt.Errorf("invalid password: %s", err)
+		return fmt.Errorf("invalid password test push: %s", err)
 	}
 	return nil
 }
